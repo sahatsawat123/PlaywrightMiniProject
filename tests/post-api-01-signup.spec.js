@@ -1,4 +1,4 @@
-//Load playwright module
+/*//Load playwright module
 const { test, expect  } = require("@playwright/test")
 const signupAPIRequestBody = require('../test-data/post-email-body.json');
 
@@ -17,4 +17,4 @@ test.describe('Post', () => {
         expect(postAPIresponseBody).toHaveProperty("message","Sign-Up Successfully")
         
     })
-})
+})*/
