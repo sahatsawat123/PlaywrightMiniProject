@@ -10,7 +10,6 @@ test.describe('Post', () => {
         expect(status).toBe(200);
 
         const header = response.headers();
-        console.log(header['content-type']);
         expect(header['content-type']).toContain('application/json');
 
         const body = await response.json();

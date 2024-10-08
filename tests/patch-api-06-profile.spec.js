@@ -1,6 +1,6 @@
 const { test, expect } = require("@playwright/test")
 const signinAPIRequestBody = require('../test-data/post-password-body.json')
-const PatchAPIRequestBody = require('../test-data/patch-api-request.json')
+const PatchAPIRequestBody = require('../test-data/patch-api-profile.json')
 let token;
 
 test.describe('Patch', () => {

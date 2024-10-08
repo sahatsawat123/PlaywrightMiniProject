@@ -3,7 +3,7 @@ const signinAPIRequestBody = require('../test-data/post-password-body.json')
 let token;
 let Productids;
 
-test.describe('Post', () => {
+test.describe('Get', () => {
     test('get Cart ProductbyId',async ({request})=>{
         const Loginresponse = await request.post('https://shop.eco-deals.com/services/api/v1/sign-in',{
             data : signinAPIRequestBody

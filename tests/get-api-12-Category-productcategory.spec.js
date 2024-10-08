@@ -3,7 +3,7 @@ const signinAPIRequestBody = require('../test-data/post-password-body.json')
 let token;
 let categoryid;
 
-test.describe('Post', () => {
+test.describe('Get', () => {
     test('get Product Category By Id',async ({request})=>{
         const Loginresponse = await request.post('https://shop.eco-deals.com/services/api/v1/sign-in',{
             data : signinAPIRequestBody
@@ -22,9 +22,6 @@ test.describe('Post', () => {
         const bodycategory = await CategoryResponse.json();
         expect(bodycategory[0]).toHaveProperty('id');
         categoryid = bodycategory[0].id;
-
-        const Categoryids = bodycategory.map(item => item.id);
-        console.log(Categoryids); // จะแสดง id ของแต่ละ object ใน array เช่น [1, 2, 3, ...]
 
         const ProductCategorybyIdResponse = await request.get(`https://shop.eco-deals.com/services/api/v1/product/category/${categoryid}`, {
             headers: {

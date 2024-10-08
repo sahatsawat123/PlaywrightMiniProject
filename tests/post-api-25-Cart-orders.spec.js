@@ -1,10 +1,10 @@
 const { test, expect } = require("@playwright/test")
 const signinAPIRequestBody = require('../test-data/post-password-body.json')
-const favoriteAPIInputBody = require('../test-data/post-favorite-body.json')
+const CartorderInput = require('../test-data/post-cart-order-body.json')
 let token;
 
 test.describe('Post', () => {
-    test('post favorite body',async ({request})=>{
+    test('Post Cart orders',async ({request})=>{
         const Loginresponse = await request.post('https://shop.eco-deals.com/services/api/v1/sign-in',{
             data : signinAPIRequestBody
         });
@@ -12,17 +12,17 @@ test.describe('Post', () => {
         expect(loginData).toHaveProperty('token');
         token = loginData.token;
 
-        const PostfavoriteResponse = await request.post('https://shop.eco-deals.com/services/api/v1/product/favorite', {
+        const CartOrdersResponse = await request.post('https://shop.eco-deals.com/services/api/v1/orders', {
             headers: {
               'content-type':'application/json',
               'Authorization': `Bearer ${token}`  // ส่ง Token ใน Authorization header
             },
-            data : favoriteAPIInputBody
+            data : CartorderInput
           });
-          const body = await PostfavoriteResponse.json();
-          expect(body).toHaveProperty("message","Create Favorite Successful")
+          const body = await CartOrdersResponse.json();
+          expect(body).toHaveProperty("message","Product Order Successful");
 
-          const status = PostfavoriteResponse.status();
+          const status = CartOrdersResponse.status();
           expect(status).toBe(200);
     })
 })
