@@ -1,17 +1,9 @@
 const { test, expect } = require("@playwright/test")
-const signinAPIRequestBody = require('../test-data/post-password-body.json')
-let token;
+require('dotenv').config();
+const token = process.env.TOKEN;
 
 test.describe('Get', () => {
     test('get Home banner',async ({request})=>{
-        const Loginresponse = await request.post('https://shop.eco-deals.com/services/api/v1/sign-in',{
-
-            data : signinAPIRequestBody
-        });
-        const loginData = await Loginresponse.json();
-        expect(loginData).toHaveProperty('token');
-        token = loginData.token;
-
         const HomeBannerResponse = await request.get('https://shop.eco-deals.com/services/api/v1/product/banner', {
             headers: {
               'Content-type':'application/json',
